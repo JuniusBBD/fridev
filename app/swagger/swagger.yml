@@ -1,0 +1,26 @@
+openapi: 3.0.3
+info:
+  title: Fridev session
+  version: 1.0.0
+
+servers:
+  - url: '/api'
+    description: Main API
+paths:
+  /v1/health:
+    get:
+      tags:
+        - Health
+      summary: Check the health of the service
+      description: Check the health of the service
+      operationId: getHealth
+      responses:
+        200:
+          description: Returns the status of the service
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
