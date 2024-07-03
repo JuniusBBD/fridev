@@ -3,9 +3,12 @@ import * as OpenApiValidator from 'express-openapi-validator';
 import SwaggerParser from '@apidevtools/swagger-parser';
 import { connector } from 'swagger-routes-express';
 import swaggerUI from 'swagger-ui-express';
+import cors from  'cors';
 import { routes } from './routes';
 
 const app = express();
+
+app.use(express.json());
 
 export const api = async (): Promise<Express> => {
 
@@ -13,6 +16,7 @@ export const api = async (): Promise<Express> => {
   const apiDescription = await parser.validate('app/swagger/swagger.yml');
   const connect = connector(routes, apiDescription);
 
+app.use(cors());
   app.use(
     OpenApiValidator.middleware({
       apiSpec: 'app/swagger/swagger.yml',

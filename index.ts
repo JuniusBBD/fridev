@@ -4,6 +4,11 @@ import { SocketManager } from './app/socket/SocketManager';
 import { Server } from 'socket.io';
 import IP from 'ip';
 
+import { config } from 'dotenv';
+config();
+
+import './app/utils/db';
+
 let socketManager: SocketManager;
 
 export const getIOManager = () => socketManager;
@@ -22,6 +27,5 @@ api()
 
     socketManager = new SocketManager(io);
 
-    console.log(`Socket is running on port: http://${IP.address()}:${PORT}`);
     console.log(`App is running on port: http://${IP.address()}:${PORT}`);
   });

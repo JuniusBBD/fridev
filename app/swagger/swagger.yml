@@ -7,6 +7,89 @@ servers:
   - url: '/api'
     description: Main API
 paths:
+  /v1/selfie:
+    post:
+      tags:
+        - Selfie
+      summary: Upload a selfie
+      description: Upload a selfie as a base64 string
+      operationId: uploadSelfie
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                selfie:
+                  type: string
+                id:
+                  type: string
+      responses:
+        201:
+          description: Selfie uploaded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+  /v1/onboarding:
+    post:
+      tags:
+        - Onboarding
+      summary: Create a new user
+      description: Create a new user
+      operationId: createUser
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                surname:
+                  type: string
+      responses:
+        201:
+          description: User created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  applicationId:
+                    type: string
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        409:
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
   /v1/health:
     get:
       tags:

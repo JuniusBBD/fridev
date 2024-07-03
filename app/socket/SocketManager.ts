@@ -4,7 +4,7 @@ export class SocketManager {
   io: Server;
   constructor(io: Server) {
     this.io = io;
-console.log('SocketManager constructor');
+
     io.on('connection', (socket) => {
       console.log('a user connected');
 
