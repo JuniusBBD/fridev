@@ -8,7 +8,6 @@ const DATABASE = process.env.MONGO_DB;
 
 const  MONGO_URI = `mongodb+srv://${USERNAME}:${PASSWORD}@cluster0.nwhesqu.mongodb.net/${DATABASE}?retryWrites=true&w=majority&appName=Cluster0`;
 
-console.log(MONGO_URI);
 mongoose.connect(MONGO_URI).then(() => {
   console.log('Connected to MongoDB');
 }
