@@ -25,10 +25,13 @@ app.use(cors());
     }),
   );
 
+
+  app.get('/', (req, res) => {
+    res.send('Fridev session');
+  });
+
    // swagger ui
    app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(apiDescription));
-  //  app.use('/', (req, res) => res.send('API is running...'));
-
   connect(app);
 
   return app;

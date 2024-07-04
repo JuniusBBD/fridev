@@ -12,7 +12,7 @@ import './app/utils/db';
 let socketManager: SocketManager;
 
 export const getIOManager = () => socketManager;
-const PORT: number = Number(process.env.PORT);
+const PORT: number = Number(process.env.PORT || '3000');
 
 api()
   .then(app => app.listen(PORT))
